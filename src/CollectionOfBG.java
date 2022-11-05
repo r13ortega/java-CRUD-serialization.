@@ -1,6 +1,4 @@
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.ObjectOutputStream;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -121,7 +119,22 @@ public class CollectionOfBG {
         }
     }
     public void loadData(){
-
+        try {
+            //read object from a file
+            FileInputStream file = new FileInputStream("BoardGames.ser");
+            //create a connection to a file
+            ObjectInputStream in = new ObjectInputStream(file);
+            //method for deserialize of an object
+            this.boardGames = (ArrayList<BoardGames>) in.readObject();
+            //read object  and convert data to type BoardGames
+            in.close();
+            file.close();
+            System.out.println("ArrayList has been deserialized!! OMG!");
+        } catch (IOException z){
+            z.printStackTrace();
+        } catch (ClassNotFoundException f){
+            f.printStackTrace();
+        }
     }
     public void borrowingBoardGame(){ //getBorrowing()
         int numOfBorrowing = 0;
