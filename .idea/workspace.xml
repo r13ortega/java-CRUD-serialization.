@@ -4,9 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="948b896c-9617-4737-bf3e-5b6ab981cf26" name="Changes" comment="Version 0.02">
-      <change beforePath="$PROJECT_DIR$/src/CollectionOfBG.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/CollectionOfBG.java" afterDir="false" />
-    </list>
+    <list default="true" id="948b896c-9617-4737-bf3e-5b6ab981cf26" name="Changes" comment="Version 0.02" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
