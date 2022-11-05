@@ -30,8 +30,33 @@ public class CollectionOfBG {
         }
     }
     public void create(){
-        System.out.println("");
-
+        System.out.println("Let's add a new board game\n" +
+                "Please enter in the (Name) of the Board Game");
+        String bGName = scan.nextLine();
+        System.out.println("Please enter in the minimum number of players needed to play");
+        int minPlayers = scan.nextInt();
+        scan.nextLine();
+        System.out.println("Please enter in the maximum number of players needed to play");
+        int maxPlayers = scan.nextInt();
+        scan.nextLine();
+        boolean owner =true;
+        System.out.println("Do you own this Board Game?\n" +
+                "(True) or (False)");
+        String borrow = scan.nextLine();
+        try {
+            if (borrow.equalsIgnoreCase("true")){
+                owner = true;
+            } else if (borrow.equalsIgnoreCase("false")) {
+                owner = false;
+            }
+        } catch (Exception e){
+            System.out.println("invalid entry try again");
+            System.out.println("Do you own this Board Game?\n" +
+                    "(True) or (False)");
+            borrow = scan.nextLine();
+        }
+        BoardGames bg = new BoardGames(bGName,maxPlayers, maxPlayers, owner);
+        boardGames.add(bg);
     }
     public void read(){
 
