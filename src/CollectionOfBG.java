@@ -19,13 +19,13 @@ public class CollectionOfBG {
                 "Type (1) for Yes\n" +
                 "Type (2) for No");
         String loadAnswer = scan.nextLine();
-        if(loadAnswer.equalsIgnoreCase("Yes")){
+        if(loadAnswer.equalsIgnoreCase("1")){
             loadData();
             System.out.println("\n" +
                     "Loading Data......\n" +
                     "Data loaded\n" +
                     "Welcome to Board Game Manager!!!");
-        } else if (loadAnswer.equalsIgnoreCase("No")) {
+        } else if (loadAnswer.equalsIgnoreCase("2")) {
             System.out.println("\n" +
                     "Very well, welcome to Jurassic... ummm I mean welcome to Board Game Manager!!!");
         }
