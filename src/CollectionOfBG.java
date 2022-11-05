@@ -51,11 +51,8 @@ public class CollectionOfBG {
             }
         } catch (Exception e){
             System.out.println("invalid entry try again");
-            System.out.println("Do you own this Board Game?\n" +
-                    "(True) or (False)");
-            borrow = scan.nextLine();
         }
-        BoardGames bg = new BoardGames(bGName,maxPlayers, maxPlayers, owner);
+        BoardGames bg = new BoardGames(bGName,minPlayers, maxPlayers, owner);
         boardGames.add(bg);
     }
     public void read(){
@@ -64,10 +61,46 @@ public class CollectionOfBG {
         }
     }
     public void update(){
-
+        System.out.println("Let's update a board game\n" +
+                "Please enter in the (Name) of the Board Game you wish to update");
+        String searchName = scan.nextLine();
+        for (BoardGames bg: boardGames) {
+            if (searchName.equalsIgnoreCase(bg.boardGameName)){
+                System.out.println("Please enter in the minimum number of players needed to play");
+                int minPlayers = scan.nextInt();
+                scan.nextLine();
+                System.out.println("Please enter in the maximum number of players needed to play");
+                int maxPlayers = scan.nextInt();
+                scan.nextLine();
+                boolean owner =true;
+                System.out.println("Do you own this Board Game?\n" +
+                        "(True) or (False)");
+                String borrow = scan.nextLine();
+                try {
+                    if (borrow.equalsIgnoreCase("true")){
+                        owner = true;
+                    } else if (borrow.equalsIgnoreCase("false")) {
+                        owner = false;
+                    }
+                } catch (Exception e){
+                    System.out.println("invalid entry try again");
+                }
+                bg.boardGameName = searchName;
+                bg.minNumOfPlayers = minPlayers;
+                bg.maxNumOfPlayers = maxPlayers;
+                bg.setOriginalOwner(owner);
+            }
+        }
     }
     public void delete(){
-
+        System.out.println("Warning, once deleted we cannot retrieve the Board Game\n" +
+                "Please enter in the (Name) of the Board Game you wish to Remove");
+        String searchName = scan.nextLine();
+        for (BoardGames bg: boardGames) {
+            if (searchName.equalsIgnoreCase(bg.boardGameName)){
+                boardGames.remove(bg);
+            }
+        }
     }
     public void saveData(){
 
@@ -75,7 +108,7 @@ public class CollectionOfBG {
     public void loadData(){
 
     }
-    public void getBorrowing(){
+    public void borrowingBoardGame(){ //getBorrowing()
         int numOfBorrowing = 0;
         for (BoardGames bg: boardGames) {
             if (bg.isOriginalOwner() == false){
