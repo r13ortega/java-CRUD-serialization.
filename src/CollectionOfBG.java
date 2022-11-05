@@ -43,16 +43,12 @@ public class CollectionOfBG {
         boolean owner =true;
         System.out.println("Do you own this Board Game?\n" +
                 "(True) or (False)");
-        String borrow = scan.nextLine();
-        try {
-            if (borrow.equalsIgnoreCase("true")){
+        String mine = scan.nextLine();
+            if (mine.equalsIgnoreCase("true")){
                 owner = true;
-            } else if (borrow.equalsIgnoreCase("false")) {
+            } else if (mine.equalsIgnoreCase("false")) {
                 owner = false;
             }
-        } catch (Exception e){
-            System.out.println("invalid entry try again");
-        }
         BoardGames bg = new BoardGames(bGName,minPlayers, maxPlayers, owner);
         boardGames.add(bg);
     }

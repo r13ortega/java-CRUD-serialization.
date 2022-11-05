@@ -11,7 +11,7 @@ public class Main {
                     "Type (R) to read all Board Games \n" +
                     "Type (U) to update a Board Game\n" +
                     "Type (D) to remove a Board Game\n \n" +
-                    "Type (S) to save newly added Board Games" +
+                    "Type (S) to save newly added Board Games\n" +
                     "Type (Q) to quit");
             String answer = scan.nextLine();
             if (answer.equalsIgnoreCase("C")){
