@@ -15,6 +15,15 @@ public class BoardGames {
         this.originalOwner = originalOwner;
     }
 
+    @Override
+    public String toString() {
+        return "BoardGames{" +
+                "boardGameName='" + boardGameName + '\'' +
+                ", minNumOfPlayers=" + minNumOfPlayers +
+                ", maxNumOfPlayers=" + maxNumOfPlayers +
+                '}';
+    }
+
     public boolean isOriginalOwner() {
         return originalOwner;
     }
