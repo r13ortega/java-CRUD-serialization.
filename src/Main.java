@@ -7,7 +7,6 @@ public class Main {
         Scanner scan = new Scanner(System.in);
         boardgames.intro();
         while (keepRunning){
-            boardgames.intro();
             System.out.println("Type (C) to save a new Board Games \n" +
                     "Type (R) to read all Board Games \n" +
                     "Type (U) to update a Board Game\n" +
