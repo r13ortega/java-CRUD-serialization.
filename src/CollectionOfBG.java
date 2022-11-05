@@ -103,12 +103,12 @@ public class CollectionOfBG {
             }
         }
     }
-    public void saveData(ArrayList<BoardGames> bg){
+    public void saveData(){
         try {
             FileOutputStream fileOut = new FileOutputStream("BoardGames.ser");
             //responsible for opening a connection to a file
             ObjectOutputStream out = new ObjectOutputStream(fileOut);
-            out.writeObject(bg);
+            out.writeObject(this.boardGames);
             //writing the object that we passed in = where we're directly writing the file
             out.close();
             fileOut.close();
