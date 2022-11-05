@@ -59,7 +59,9 @@ public class CollectionOfBG {
         boardGames.add(bg);
     }
     public void read(){
-
+        for (BoardGames bg: boardGames) {
+            System.out.println(bg.toString());
+        }
     }
     public void update(){
 
