@@ -1,3 +1,6 @@
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -102,8 +105,20 @@ public class CollectionOfBG {
             }
         }
     }
-    public void saveData(){
-
+    public void saveData(ArrayList<BoardGames> bg){
+        try {
+            FileOutputStream fileOut = new FileOutputStream("BoardGames.ser");
+            //responsible for opening a connection to a file
+            ObjectOutputStream out = new ObjectOutputStream(fileOut);
+            out.writeObject(bg);
+            //writing the object that we passed in = where we're directly writing the file
+            out.close();
+            fileOut.close();
+            System.out.println("Serialized Array data is saved!!!");
+        } catch (IOException i) {
+            i.printStackTrace();
+            //history of all the methods that were called - allow us to see where the code went wrong.
+        }
     }
     public void loadData(){
 
