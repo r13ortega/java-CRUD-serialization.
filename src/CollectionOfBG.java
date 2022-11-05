@@ -48,4 +48,22 @@ public class CollectionOfBG {
     public void loadData(){
 
     }
+    public void getBorrowing(){
+        int numOfBorrowing = 0;
+        for (BoardGames bg: boardGames) {
+            if (bg.isOriginalOwner() == false){
+                System.out.println(boardGames.toString());
+                numOfBorrowing++;
+            }
+        }
+        System.out.println("You are currently borrowing " + numOfBorrowing + " Board Games");
+    }
+    public void stealBoardGames(){
+        for (BoardGames bg: boardGames) {
+            if (bg.isOriginalOwner() == false){
+                bg.setOriginalOwner(true);
+            }
+        }
+        System.out.println("heh, you are currently borrowing 0 Board Games");
+    }
 }
