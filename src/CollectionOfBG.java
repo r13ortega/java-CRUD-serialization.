@@ -13,25 +13,6 @@ public class CollectionOfBG implements Serializable{
         this.boardGames = new ArrayList<>();
     }
 
-    public void intro(){
-        System.out.println("Hello again, welcome to Board Games Manager\n" +
-                "Where we strive to give you the best experience in Board Game Managing\n" +
-                "First things, first...\n" +
-                "Would you like to load the previous data?\n" +
-                "Type (1) for Yes\n" +
-                "Type (2) for No");
-        String loadAnswer = scan.nextLine();
-        if(loadAnswer.equalsIgnoreCase("1")){
-            loadData();
-            System.out.println("\n" +
-                    "Loading Data......\n" +
-                    "Data loaded\n" +
-                    "Welcome to Board Game Manager!!!");
-        } else if (loadAnswer.equalsIgnoreCase("2")) {
-            System.out.println("\n" +
-                    "Very well, welcome to Jurassic... ummm I mean welcome to Board Game Manager!!!");
-        }
-    }
     public void create(){
         System.out.println("Let's add a new board game\n" +
                 "Please enter in the (Name) of the Board Game");
@@ -112,13 +93,14 @@ public class CollectionOfBG implements Serializable{
         }
     }
     public void loadData(){
+        this.boardGames = null;
         try {
             //read object from a file
             FileInputStream file = new FileInputStream("BoardGames.ser");
             //create a connection to a file
             ObjectInputStream in = new ObjectInputStream(file);
             //method for deserialize of an object
-            this.boardGames = (CollectionOfBG) in.readObject();
+            this.boardGames = (ArrayList<BoardGames>) in.readObject();
             //read object  and convert data to type BoardGames
             in.close();
             file.close();

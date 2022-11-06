@@ -3,11 +3,14 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main{
+    public static CollectionOfBG theBoardGame = new CollectionOfBG();
+
     public static void main(String[] args) {
         boolean keepRunning = true;
-        CollectionOfBG theBoardGame = new CollectionOfBG();
+        //CollectionOfBG theBoardGame = new CollectionOfBG();
         Scanner scan = new Scanner(System.in);
-        theBoardGame.intro();
+        //theBoardGame.intro();
+        loadData();
         while (keepRunning){
             System.out.println("Type (C) to save a new Board Games \n" +
                     "Type (R) to read all Board Games \n" +
@@ -46,6 +49,25 @@ public class Main{
             } else if (answer.equalsIgnoreCase("Q")) {
                 keepRunning = false;
             }
+        }
+    }
+
+    public static void loadData(){
+        try {
+            //read object from a file
+            FileInputStream file = new FileInputStream("BoardGames.ser");
+            //create a connection to a file
+            ObjectInputStream in = new ObjectInputStream(file);
+            //method for deserialize of an object
+            theBoardGame = (CollectionOfBG) in.readObject();
+            //read object  and convert data to type BoardGames
+            in.close();
+            file.close();
+            System.out.println("ArrayList has been deserialized!! OMG!");
+        } catch (IOException z){
+            z.printStackTrace();
+        } catch (ClassNotFoundException f){
+            f.printStackTrace();
         }
     }
 
