@@ -2,14 +2,12 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class Main implements Serializable{
-    public static CollectionOfBG theBoardGame = new CollectionOfBG();
+public class Main{
     public static void main(String[] args) {
         boolean keepRunning = true;
-        //CollectionOfBG theBoardGame = null;
+        CollectionOfBG theBoardGame = new CollectionOfBG();
         Scanner scan = new Scanner(System.in);
-        //theBoardGame.intro();
-        //loadData();
+        theBoardGame.intro();
         while (keepRunning){
             System.out.println("Type (C) to save a new Board Games \n" +
                     "Type (R) to read all Board Games \n" +
@@ -28,7 +26,23 @@ public class Main implements Serializable{
                 theBoardGame.delete();
             } else if (answer.equalsIgnoreCase("S")) {
                 //theBoardGame.saveData();
-                SerializedObject.saveData(theBoardGame);
+
+                try {
+                    FileOutputStream fileOut = new FileOutputStream("BoardGames.ser");
+                    //fileOut does load successfully
+                    //responsible for opening a connection to a file
+                    ObjectOutputStream out = new ObjectOutputStream(fileOut);
+                    //out does load successfully
+                    out.writeObject(theBoardGame);
+                    //writing the object that we passed in = where we're directly writing the file
+                    out.close();
+                    fileOut.close();
+                    System.out.println("Serialized Array data is saved!!!");
+                } catch (IOException i) {
+                    i.printStackTrace();
+                    //history of all the methods that were called - allow us to see where the code went wrong.
+                }
+
             } else if (answer.equalsIgnoreCase("Q")) {
                 keepRunning = false;
             }

@@ -5,9 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="948b896c-9617-4737-bf3e-5b6ab981cf26" name="Changes" comment="Version 0.80">
-      <change afterPath="$PROJECT_DIR$/src/SerializedObject.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/BoardGames.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BoardGames.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BoardGames.ser" beforeDir="false" afterPath="$PROJECT_DIR$/BoardGames.ser" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/CollectionOfBG.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/CollectionOfBG.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
     </list>

@@ -5,9 +5,9 @@ import java.util.Scanner;
 public class CollectionOfBG implements Serializable{
 
     ArrayList<BoardGames> boardGames;
-    Scanner scan = new Scanner(System.in);
+    transient Scanner scan = new Scanner(System.in);
     //transient should fix this maybe
-    //unable to implements Serializable because of Scanner, stupid 
+    //unable to implements Serializable because of Scanner, stupid
 
     public CollectionOfBG() {
         this.boardGames = new ArrayList<>();
@@ -118,7 +118,7 @@ public class CollectionOfBG implements Serializable{
             //create a connection to a file
             ObjectInputStream in = new ObjectInputStream(file);
             //method for deserialize of an object
-            this.boardGames = (ArrayList<BoardGames>) in.readObject();
+            this.boardGames = (CollectionOfBG) in.readObject();
             //read object  and convert data to type BoardGames
             in.close();
             file.close();
