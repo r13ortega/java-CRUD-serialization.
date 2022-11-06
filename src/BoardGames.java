@@ -1,4 +1,6 @@
-public class BoardGames {
+import java.io.*;
+
+public class BoardGames implements Serializable {
 
     public String boardGameName;
 

@@ -2,13 +2,15 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class CollectionOfBG {
+public class CollectionOfBG implements Serializable{
 
     ArrayList<BoardGames> boardGames;
     Scanner scan = new Scanner(System.in);
+    //transient should fix this maybe
+    //unable to implements Serializable because of Scanner, stupid 
 
-    public void CollectionOfBG() {
-        boardGames = new ArrayList<>();
+    public CollectionOfBG() {
+        this.boardGames = new ArrayList<>();
     }
 
     public void intro(){
@@ -40,17 +42,18 @@ public class CollectionOfBG {
         System.out.println("Please enter in the maximum number of players needed to play");
         int maxPlayers = scan.nextInt();
         scan.nextLine();
-        boolean owner =true;
+        //boolean owner = true;
         System.out.println("Do you own this Board Game?\n" +
-                "(True) or (False)");
-        String mine = scan.nextLine();
-            if (mine.equalsIgnoreCase("true")){
-                owner = true;
-            } else if (mine.equalsIgnoreCase("false")) {
-                owner = false;
-            }
-        BoardGames bg = new BoardGames(bGName,minPlayers, maxPlayers, owner);
-        boardGames.add(bg);
+                "(true) or (false)");
+        boolean owner = scan.nextBoolean();
+        scan.nextLine();
+//            if (mine == true){
+//                owner = true;
+//            } else if (mine == false) {
+//                owner = false;
+//            }
+        BoardGames bG = new BoardGames(bGName,minPlayers, maxPlayers, owner);
+        boardGames.add(bG);
     }
     public void read(){
         for (BoardGames bg: boardGames) {
@@ -69,19 +72,10 @@ public class CollectionOfBG {
                 System.out.println("Please enter in the maximum number of players needed to play");
                 int maxPlayers = scan.nextInt();
                 scan.nextLine();
-                boolean owner =true;
                 System.out.println("Do you own this Board Game?\n" +
-                        "(True) or (False)");
-                String borrow = scan.nextLine();
-                try {
-                    if (borrow.equalsIgnoreCase("true")){
-                        owner = true;
-                    } else if (borrow.equalsIgnoreCase("false")) {
-                        owner = false;
-                    }
-                } catch (Exception e){
-                    System.out.println("invalid entry try again");
-                }
+                        "(true) or (false)");
+                boolean owner = scan.nextBoolean();
+                scan.nextLine();
                 bg.boardGameName = searchName;
                 bg.minNumOfPlayers = minPlayers;
                 bg.maxNumOfPlayers = maxPlayers;
@@ -100,15 +94,18 @@ public class CollectionOfBG {
         }
     }
     public void saveData(){
-        try {
+        //method does load successfully
+             try {
             FileOutputStream fileOut = new FileOutputStream("BoardGames.ser");
+            //fileOut does load successfully
             //responsible for opening a connection to a file
             ObjectOutputStream out = new ObjectOutputStream(fileOut);
+            //out does load successfully
             out.writeObject(this.boardGames);
-            //writing the object that we passed in = where we're directly writing the file
+          //writing the object that we passed in = where we're directly writing the file
             out.close();
-            fileOut.close();
-            System.out.println("Serialized Array data is saved!!!");
+           fileOut.close();
+             System.out.println("Serialized Array data is saved!!!");
         } catch (IOException i) {
             i.printStackTrace();
             //history of all the methods that were called - allow us to see where the code went wrong.

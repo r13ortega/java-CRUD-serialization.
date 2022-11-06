@@ -1,11 +1,15 @@
+import java.io.*;
+import java.util.ArrayList;
 import java.util.Scanner;
 
-public class Main {
+public class Main implements Serializable{
+    public static CollectionOfBG theBoardGame = new CollectionOfBG();
     public static void main(String[] args) {
         boolean keepRunning = true;
-        CollectionOfBG boardgames = new CollectionOfBG();
+        //CollectionOfBG theBoardGame = null;
         Scanner scan = new Scanner(System.in);
-        boardgames.intro();
+        //theBoardGame.intro();
+        //loadData();
         while (keepRunning){
             System.out.println("Type (C) to save a new Board Games \n" +
                     "Type (R) to read all Board Games \n" +
@@ -15,18 +19,20 @@ public class Main {
                     "Type (Q) to quit");
             String answer = scan.nextLine();
             if (answer.equalsIgnoreCase("C")){
-                boardgames.create();
+                theBoardGame.create();
             } else if (answer.equalsIgnoreCase("R")){
-                boardgames.read();
+                theBoardGame.read();
             } else if (answer.equalsIgnoreCase("U")) {
-                boardgames.update();
+                theBoardGame.update();
             } else if (answer.equalsIgnoreCase("D")) {
-                boardgames.delete();
+                theBoardGame.delete();
             } else if (answer.equalsIgnoreCase("S")) {
-                boardgames.saveData();
+                //theBoardGame.saveData();
+                SerializedObject.saveData(theBoardGame);
             } else if (answer.equalsIgnoreCase("Q")) {
                 keepRunning = false;
             }
         }
     }
+
 }
