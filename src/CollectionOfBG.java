@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class CollectionOfBG implements Serializable{
 
     ArrayList<BoardGames> boardGames;
-    transient Scanner scan = new Scanner(System.in);
+    //transient Scanner scan = new Scanner(System.in);
     //transient should fix this maybe
     //unable to implements Serializable because of Scanner, stupid
 
@@ -14,8 +14,10 @@ public class CollectionOfBG implements Serializable{
     }
 
     public void create(){
+        //Scanner scan = new Scanner(System.in);
         System.out.println("Let's add a new board game\n" +
                 "Please enter in the (Name) of the Board Game");
+        Scanner scan = new Scanner(System.in);
         String bGName = scan.nextLine();
         System.out.println("Please enter in the minimum number of players needed to play");
         int minPlayers = scan.nextInt();
@@ -42,6 +44,7 @@ public class CollectionOfBG implements Serializable{
         }
     }
     public void update(){
+        Scanner scan = new Scanner(System.in);
         System.out.println("Let's update a board game\n" +
                 "Please enter in the (Name) of the Board Game you wish to update");
         String searchName = scan.nextLine();
@@ -65,6 +68,7 @@ public class CollectionOfBG implements Serializable{
         }
     }
     public void delete(){
+        Scanner scan = new Scanner(System.in);
         System.out.println("Warning, once deleted we cannot retrieve the Board Game\n" +
                 "Please enter in the (Name) of the Board Game you wish to Remove");
         String searchName = scan.nextLine();

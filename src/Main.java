@@ -3,7 +3,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main{
-    public static CollectionOfBG theBoardGame = new CollectionOfBG();
+   public static CollectionOfBG theBoardGame = new CollectionOfBG();
 
     public static void main(String[] args) {
         boolean keepRunning = true;
@@ -11,6 +11,7 @@ public class Main{
         Scanner scan = new Scanner(System.in);
         //theBoardGame.intro();
         loadData();
+
         while (keepRunning){
             System.out.println("Type (C) to save a new Board Games \n" +
                     "Type (R) to read all Board Games \n" +
@@ -53,6 +54,7 @@ public class Main{
     }
 
     public static void loadData(){
+        //theBoardGame = null;
         try {
             //read object from a file
             FileInputStream file = new FileInputStream("BoardGames.ser");
